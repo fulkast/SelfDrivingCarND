@@ -93,13 +93,13 @@ Next, the two lanes are post-processed separately. For each side, each point bel
 ###2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+One potential shortcoming would be what would happen when the lanes colors are drastically different from the assumed yellow and white colors. In that case, it would be beneficial to consider the union of different color masks, much like the approach taken here but extended to more colors.
 
-Another shortcoming could be ...
+Another drawback is the sensitivity to the tuning parameters. The approach used here relies on thresholding based on different colors. These thresholds depend on external factors such as light source changes, time of day etc. For the cases tested here however, the combination of the white and yellow mask seem to work well.
 
 
 ###3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A great way to improve the lane detector would be to take into account the continuous nature of the actual lanes and to store the pose of the lanes from the previous frame. This way we may have a sort of prior guess as to where the lanes would be, and build up from there. This would lead into smoother lane tracking.
 
-Another potential improvement could be to ...
+It would also be beneficial to fit non-linear functions to the lanes. This way the tracker would be more robust at sharp turns, which are quite crucial.
