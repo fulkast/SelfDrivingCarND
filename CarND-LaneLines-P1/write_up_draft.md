@@ -25,6 +25,9 @@ The goals / steps of this project are the following:
 
 [masked_image]: ./output_images/input_after_mask.png "White Color Mask"
 
+[focused_image]: ./output_images/input_masked_focused.png "White Color Mask"
+
+
 ---
 
 ### Reflection
@@ -48,6 +51,11 @@ The final mask:
 
 The masked input image:
 ![alt text][masked_image]
+
+Next up, I select a polygonal region of interest that is roughly symmetric about the center of the image and extends from the bottom of the image to right about half way. 
+
+The focused image:
+
 
 
 ###2. Identify potential shortcomings with your current pipeline
