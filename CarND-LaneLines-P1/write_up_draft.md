@@ -23,10 +23,19 @@ The goals / steps of this project are the following:
 
 [final_mask]: ./output_images/gray_yellow_mask.png "Final Mask (Sum of Yellow and White)"
 
-[masked_image]: ./output_images/input_after_mask.png "White Color Mask"
+[masked_image]: ./output_images/input_after_mask.png "Masked Image"
 
-[focused_image]: ./output_images/input_masked_focused.png "White Color Mask"
+[focused_image]: ./output_images/input_masked_focused.png "Masked and Focused Image"
 
+[raw_lines]: ./output_images/raw_lines.png "Raw Lines"
+
+[hull]: ./output_images/hull_contour.png "Hull Contour"
+
+[slope_plot]: ./output_images/clustering_slopes.png "Slope Clusters"
+
+[dividing_lane]: ./output_images/differentiated_lanes.png "Divided Lanes"
+
+[final_lanes]: ./output_images/lanes_after_RANSAC.png "Final Lanes"
 
 ---
 
@@ -55,6 +64,29 @@ The masked input image:
 Next up, I select a polygonal region of interest that is roughly symmetric about the center of the image and extends from the bottom of the image to right about half way. 
 
 The focused image:
+![alt text][focused_image]
+
+At this point it would be beneficial to be able to treate the points on the two lanes separately. To do this, I first extracted the lines using the Hough transform algorithm with a spatial resolution of 5 pixels, angular resolution of 5 degrees, vote threshold of 50 votes minimum, minimum line length of 10 and maximum line gap of 2. This results in the lines shown below.
+
+![alt text][raw_lines]
+
+From the vertices of these lines, we can extract the convex hull which encloses all the points. From the hull shape we can then extract center of mass using openCV's moments function. The resultant center of the lanes is shown below.
+
+![alt text][hull]
+
+To distinguish between the two lanes, another channel of information is used, namely the slope of the individual lines. Collecting the slopes together and running a K-means clustering into two clusters - with initial cluster centers at diametrically separated values away from zero - we can obtain the "aggregate" slopes of the two lanes. The figure below shows the distribution of the slopes for this working example and the corresponding slope cluster centers.
+
+![alt text][slope_plot]
+
+Using this information, as well as the horizontal moment of area of each line with respect to the center line, each line may be assigned to either the left or right lane. A line belongs to the left lane if its moment is negative and its slope clusters together with the left lane lines. The left lane cluster has the lower value of the two slope clusters.
+
+The resultant separation is shown below:
+
+![alt text][dividing_lane]
+
+Next, the two lanes are post-processed separately. For each side, each point belonging to a line is fed into a RANSAC regressor, to learn the line while taking into consideration of outliers. Finally, the lane produced by predicting the value of the lane at the bottom of the screen as well as at a fixed height close to the middle of the screen. This is done for both lanes separately. 
+
+![alt text][final_lanes]
 
 
 
