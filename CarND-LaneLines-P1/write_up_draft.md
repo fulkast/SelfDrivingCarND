@@ -44,9 +44,10 @@ Assuming that the lanes are either white or yellow, I proceed with transforming 
 Using the bitwise-or operation the two masks are summed together to produce a mask that retains the yellow and white information as seen below.
 
 The final mask:
-![alt text][white_mask]
+![alt text][final_mask]
 
 The masked input image:
+![alt text][masked_image]
 
 
 ###2. Identify potential shortcomings with your current pipeline
