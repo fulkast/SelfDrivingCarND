@@ -17,6 +17,14 @@ The goals / steps of this project are the following:
 
 [raw_input_image]: ./output_images/111.jpg "Raw Input Image"
 
+[yellow_mask]: ./output_images/yellow_mask.png "Yellow Color Mask"
+
+[white_mask]: ./output_images/gray_mask.png "White Color Mask"
+
+[final_mask]: ./output_images/gray_yellow_mask.png "Final Mask (Sum of Yellow and White)"
+
+[masked_image]: ./output_images/input_after_mask.png "White Color Mask"
+
 ---
 
 ### Reflection
@@ -26,6 +34,19 @@ The goals / steps of this project are the following:
 My pipeline begins with the input image in RGB format. An example is shown below which was extracted from the challenge video. 
 
 ![alt text][raw_input_image]
+
+Assuming that the lanes are either white or yellow, I proceed with transforming the image to the HSV space where the yellow color may be easily singled out. To isolate the white color information, I converted the original image into grayscale where the intensity can be used to find white colors. The following two images show the yellow and white masks respectively,
+
+![alt text][yellow_mask]
+
+![alt text][white_mask]
+
+Using the bitwise-or operation the two masks are summed together to produce a mask that retains the yellow and white information as seen below.
+
+The final mask:
+![alt text][white_mask]
+
+The masked input image:
 
 
 ###2. Identify potential shortcomings with your current pipeline
