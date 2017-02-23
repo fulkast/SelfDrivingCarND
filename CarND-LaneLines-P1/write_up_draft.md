@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[raw_input_image]: ./output_images/111.png "Raw Input Image"
+[raw_input_image]: ./output_images/111.jpg "Raw Input Image"
 
 ---
 
