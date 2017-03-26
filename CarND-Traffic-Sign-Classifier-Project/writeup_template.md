@@ -27,6 +27,7 @@ The goals / steps of this project are the following:
 [image6]: ./german_traffic_sign_data/priority.jpg "Traffic Sign 3"
 [image7]: ./german_traffic_sign_data/yield.jpg "Traffic Sign 4"
 [image8]: ./german_traffic_sign_data/stop.jpg "Traffic Sign 5"
+[image9]: ./sample_test_output.png "Output From Classifying the Five Images Found Online"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -124,8 +125,10 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
+
 The Lenet architecture from the digit recognition example was used at first. It is a strong architecture, well designed, and designated for a similar image recognition task.
 * What were some problems with the initial architecture? 
+
 The initial model gave low validation accuracy.
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 
@@ -163,6 +166,10 @@ Here are the results of the prediction:
 
 The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 92.6%.
 The result from cell nine in my code shows, for each image, two sub plots. The single subplot on the left shows the image from the test set. The five plots on the right show the images from the training set with the top 5 softwmax probabilities.
+
+Below is an example of the output
+
+![alt text][image9]
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
