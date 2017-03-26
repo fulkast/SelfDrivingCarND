@@ -20,8 +20,8 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./training_data_dist.png 
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
+[image2]: ./validation_data_dist.png 
+[image3]: ./testing_data_dist.png 
 [image4]: ./german_traffic_sign_data/no_enter.jpg "Traffic Sign 1"
 [image5]: ./german_traffic_sign_data/50.jpg "Traffic Sign 2"
 [image6]: ./german_traffic_sign_data/priority.jpg "Traffic Sign 3"
