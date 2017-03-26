@@ -58,6 +58,9 @@ The code for this step is contained in the third code cell of the IPython notebo
 Here is an exploratory visualization of the data set. Below are bar charts showing the distributions of the traffic sign classes used in the training, validation and testing phase.
 
 ![alt text][image1]
+![alt text][image2]
+![alt text][image3]
+
 
 ###Design and Test a Model Architecture
 
