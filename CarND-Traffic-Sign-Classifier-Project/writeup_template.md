@@ -29,6 +29,8 @@ The goals / steps of this project are the following:
 [image8]: ./german_traffic_sign_data/stop.jpg "Traffic Sign 5"
 [image9]: ./sample_test_output.png "Output From Classifying the Five Images Found Online"
 
+[image10]: ./featureMap.png
+
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -185,3 +187,9 @@ For all the images taken from the web, the output softmax probabilities of the p
 | 1.00 	        		| Yield sign					 				|
 | 1.00 	        		| Stop sign         							|
 
+
+Additionally, I've used the outputFeatureMap method provided to explore the emphasis of different layers
+
+The figure below shows the activation at the first layer to the yield sign. It demonstrates how some neurons are triggered by edges of a certain orientation, at the boundaries of the sign. E.g. featureMap 0 focuses on the positively sloped boundaries whereas featureMap 21 focuses on the negatively sloped boundaries.
+
+![alt text][image10]
