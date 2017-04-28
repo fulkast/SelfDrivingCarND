@@ -75,7 +75,7 @@ Here is an example image of center lane driving:
 
 ![alt text][image2] 
 
-To augment the data sat, I also flipped images and angles thinking that this would help mitigate the bias in the driving data caused by the counter-clockwise nature of track 1. For example, here is an image that has then been flipped:
+To augment the data sat, I also flipped images and angles thinking that this would help mitigate the bias in the driving data caused by the counter-clockwise nature of track 1. For example, here is an image that has then been flipped. This example also shows a scenario where the car is trained to recover from steering away from the center-line of the road:
 
 ![alt text][image6]
 ![alt text][image7]
