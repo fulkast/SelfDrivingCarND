@@ -88,6 +88,6 @@ After the collection process, I had 14820 number of data points. I then used hal
 
 I finally randomly shuffled the data set and put 50% of the data into a validation set. 
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 10 as evidenced by the monotonic drop in the validation error also seen in the figure below. I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 10 as the training as well as validation error plateaus past this epoch. This behavior is seen in the error profile shown below. I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
 ![alt_text][image8]

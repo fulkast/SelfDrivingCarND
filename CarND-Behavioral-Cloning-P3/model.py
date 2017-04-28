@@ -9,6 +9,7 @@ from keras import regularizers
 import cv2
 import numpy as np
 import sklearn
+import matplotlib.pyplot as plt
 
 # Load simulation data
 samples = []
@@ -75,6 +76,20 @@ train_steps = len(train_samples)/batch_size
 print(train_steps)
 validation_steps = len(validation_samples)/batch_size
 
-model.fit_generator(train_generator, steps_per_epoch=train_steps,
-            validation_data=validation_generator,
-             validation_steps=validation_steps, nb_epoch=10)
+history_object   = model.fit_generator(train_generator,
+                    steps_per_epoch=train_steps,
+                    validation_data=validation_generator,
+                    validation_steps=validation_steps, nb_epoch=10, verbose=1)
+
+
+### print the keys contained in the history object
+print(history_object.history.keys())
+
+### plot the training and validation loss for each epoch
+plt.plot(history_object.history['loss'])
+plt.plot(history_object.history['val_loss'])
+plt.title('model mean squared error loss')
+plt.ylabel('mean squared error loss')
+plt.xlabel('epoch')
+plt.legend(['training set', 'validation set'], loc='upper right')
+plt.show()
