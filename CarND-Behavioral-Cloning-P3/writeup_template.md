@@ -1,4 +1,4 @@
-#**Behavioral Cloning** 
+**Behavioral Cloning** 
 
 **Behavioral Cloning Project**
 
@@ -19,9 +19,7 @@ The goals / steps of this project are the following:
 [image7]: ./examples/postflip.png "Flipped Image"
 
 ---
-###Files Submitted & Code Quality
-
-####1.
+## Files Submitted & Code Quality
 
 My project includes the following files:
 * model.py containing the script to create and train the model
@@ -29,41 +27,36 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md or writeup_report.pdf summarizing the results
 
-####2.
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
 python drive.py model.h5
 ```
 
-####3.
-
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-###Model Architecture and Training Strategy
-
-####1. 
+### Model Architecture and Training Strategy 
 
 My model follows the nVidia self-driving architecture. I begin by normalizing the data. Thereafter, three 2D-convolutional layers follow. Each of these has a relu activation non-linearity and a 5x5 filter. The depth after the final layer here is 48. Following this procedure, a 3X3 filtere, 2D-convolutional layer with a relu activation is introduced. The depth after this layer is 64. To prevent over-fitting, the output of this layer is passed through a dropout with 0.5 retention rate. It is then followed by an identical convolutional layer. Thereafter, the data is flattened and passed through three fully-connected layers, the first of which, has an l2-norm regularizer to prevent overfitting. (model.py lines 51-70)
 
-####2. Attempts to reduce overfitting in the model
+#### Attempts to reduce overfitting in the model
 
 The model contains a dropout layer and an l2-norm regularizer in order to reduce overfitting (model.py lines 62 and 65). 
 
 The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
-####3. Model parameter tuning
+#### Model parameter tuning
 
 The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 72).
 
-####4. Appropriate training data
+#### Appropriate training data
 
 Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road. Special attention was made, to ensure that the data contained enough scenes from the anomalous regions of the track e.g. the bridge and the regions where the curb was muddy.
 
 For details about how I created the training data, see the next section. 
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. Solution Design Approach
+#### Solution Design Approach
 
 The overall strategy for deriving a model architecture was to start from the simplest model and then introduce complexity until the car can "almost always" drive correctly. Then, I would either improve the regularization or introduce more data to fit the scenarios where the car doesn't drive correctly. 
 
@@ -78,7 +71,7 @@ The final step was to run the simulator to see how well the car was driving arou
 The vehicle however, was able to stay on the track at all times. The passengers would be safe, but may experience sensations of nausea.
 
 
-####2. Creation of the Training Set & Training Process
+#### Creation of the Training Set & Training Process
 
 Here is an example image of center lane driving:
 
