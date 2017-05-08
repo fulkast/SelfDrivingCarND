@@ -17,7 +17,7 @@ The following steps are carried out:
 [image2]: ./output_images/binary_combo_united.png "Binary Union of Filters"
 [image3]: ./output_images/binary_combo.png "Binary Example"
 [image4]: ./output_images/warped_straight_lines.png "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image5]: ./output_images/lanes_clustereed.png "Fit Visual"
 [image6]: ./output_images/example_output.png "Output"
 [video1]: ./project_video.mp4 "Video"
 
@@ -64,6 +64,8 @@ I verified that my perspective transform was working as expected by drawing the 
 To actually fit a polynomial line to the lanes, the image is roughly split into two halves, along the x-axis. From the binary image resulted from the color and gradient filters, a histogram of image intensity along the vertical y-axis is calculated. This is done to depict the root location of the lanes on the image, which can be singled out by finding the peak of the histogram on the x-axis. 
 
 The vertical axis is split into 9 segments. This splitting is done so that a sliding window approach maybe used to traverse the image from the bottom (lane root) to the top, following the path of the lane which is depicted by the center of the cluster of non-zero values on the binary image. A minimum of 50 non-zero pixel points is required for the region to be appended to the list of vertices that contribute to the polynomial coefficient calculation. The code for this part is located in code block 18 in the ipython notebook.
+
+![alt_text][image_5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
