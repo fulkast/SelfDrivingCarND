@@ -65,7 +65,7 @@ To actually fit a polynomial line to the lanes, the image is roughly split into 
 
 The vertical axis is split into 9 segments. This splitting is done so that a sliding window approach maybe used to traverse the image from the bottom (lane root) to the top, following the path of the lane which is depicted by the center of the cluster of non-zero values on the binary image. A minimum of 50 non-zero pixel points is required for the region to be appended to the list of vertices that contribute to the polynomial coefficient calculation. The code for this part is located in code block 18 in the ipython notebook.
 
-![alt_text][image_5]
+![alt text][image5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
