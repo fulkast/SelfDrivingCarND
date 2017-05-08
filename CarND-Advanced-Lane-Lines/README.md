@@ -17,7 +17,7 @@ The following steps are carried out:
 [image2]: ./output_images/binary_combo_united.png "Binary Union of Filters"
 [image3]: ./output_images/binary_combo.png "Binary Example"
 [image4]: ./output_images/warped_straight_lines.png "Warp Example"
-[image5]: ./output_images/lanes_clustereed.png "Fit Visual"
+[image5]: ./output_images/lanes_clustered.png "Fit Visual"
 [image6]: ./output_images/example_output.png "Output"
 [video1]: ./project_video.mp4 "Video"
 
