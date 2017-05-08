@@ -18,7 +18,7 @@ The following steps are carried out:
 [image3]: ./output_images/binary_combo.png "Binary Example"
 [image4]: ./output_images/warped_straight_lines.png "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
+[image6]: ./output_images/example_output.png "Output"
 [video1]: ./project_video.mp4 "Video"
 
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -61,17 +61,17 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+To actually fit a polynomial line to the lanes, the image is roughly split into two halves, along the x-axis. From the binary image resulted from the color and gradient filters, a histogram of image intensity along the vertical y-axis is calculated. This is done to depict the root location of the lanes on the image, which can be singled out by finding the peak of the histogram on the x-axis. 
 
-![alt text][image5]
+The vertical axis is split into 9 segments. This splitting is done so that a sliding window approach maybe used to traverse the image from the bottom (lane root) to the top, following the path of the lane which is depicted by the center of the cluster of non-zero values on the binary image. A minimum of 50 non-zero pixel points is required for the region to be appended to the list of vertices that contribute to the polynomial coefficient calculation. The code for this part is located in code block 18 in the ipython notebook.
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+The lane curvature and car deviation from lane center are also calculated in code block 18 in the `process_image` function of the `Line` class. The principle uses the analytical solution to the second and first derivative of the second order polynomial, fit to the lane lines, evaluated at the bottom of the recorded image. We assume that the camera is mounted at the centerline of the car, along the axis perpendicular to the direction of travel and parallel to the ground plane. The deviation from center of lane is therefore calculated by comparing the mean of the lane points, evaluated at the bottom of the camera image, to the image center point in the x-axis, projected to the warped image. This warped camera center point along the x-axis is 550 in pixel space (3m from the left side of the image, in physical space). The along the x-axis the conversion from pixel to physical space is 3.7m to 700 pixels and along the y-axis it is, 30m to 720 pixels. 
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+This part is also implemented in code block 18 in the `process_image` function of the `Line` class. Here is an example of my result on a test image:
 
 ![alt text][image6]
 
@@ -81,7 +81,7 @@ I implemented this step in lines # through # in my code in `yet_another_file.py`
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./base_output.mp4)
 
 ---
 
@@ -89,4 +89,5 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+My implementation makes use of a moving average filter in time (this submission averaged over 15 frames) to filter out noisy detections over time. This makes the assumption that the frame rate of the camera relative to the speed of motion is fast enough such that the window length of 15 frames is small enough to still react to the changes in the car's motion. A more sensitive assumption is the orientation of the road relative to the camera. Artifacts fo this assumption can be seen in the output video, when the car drives over a bump. The perspective transform when the camera is tilted isn't the same as the constant distortion parameter used. This resulted in a somewhat inaccurate calculation of the lanes. 
+Such a scenario is very prominent in places with varying inclinations of the road e.g. San Francisco. To mitigate this artifact, other modalities of data may come to the help. For instance, information from a 3-D lidar could be used to first segment the environment into planes, onto which the RGB data can be projected and the perspective transform calculated on-the-fly.
