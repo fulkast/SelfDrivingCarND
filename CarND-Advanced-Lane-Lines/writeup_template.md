@@ -14,7 +14,7 @@ The following steps are carried out:
 [//]: # (Image References)
 
 [image1]: ./output_images/undistort.png "Undistorted"
-[image2]: ./test_images/test1.png "Road Transformed"
+[image2]: ./output_images/binary_combo_united.png "Binary Union of Filters"
 [image3]: ./output_images/binary_combo.png "Binary Example"
 [image4]: ./output_images/warped_straight_lines.png "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
@@ -42,6 +42,7 @@ I then used `cv2.calibrateCamera()` function to calculate the distortion paramet
 I used a combination of color and gradient thresholds to generate a binary image, using the helper functions in code block 14 in the ipython notebook.  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
 
 ![alt text][image3]
+![alt text][image2]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
